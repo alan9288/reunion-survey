@@ -5,17 +5,97 @@ import requests
 # 頁面配置
 st.set_page_config(page_title="同學聚會統計", page_icon="🍴", layout="centered")
 
-# 自訂樣式
+# 優化的 UI 樣式 - 支援深色/淺色模式
 st.markdown("""
 <style>
-    .main-header {
-        text-align: center;
-        padding: 1rem;
+    /* 主標題樣式 */
+    h1 {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700 !important;
     }
+    
+    /* 表單容器 - 自動適應主題 */
     .stForm {
-        background-color: #f8f9fa;
-        padding: 2rem;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 子標題樣式 */
+    .stForm h3 {
+        color: #667eea !important;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* 按鈕樣式 */
+    .stButton > button {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        color: white !important;
+        border: none;
         border-radius: 10px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* 選擇框樣式 */
+    .stSelectbox > div > div,
+    .stMultiSelect > div > div {
+        border-radius: 10px !important;
+    }
+    
+    /* 輸入框樣式 */
+    .stTextInput > div > div > input {
+        border-radius: 10px !important;
+    }
+    
+    /* 成功訊息樣式 */
+    .stSuccess {
+        background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border-left: 4px solid #667eea;
+        border-radius: 10px;
+    }
+    
+    /* 資訊區塊樣式 */
+    .stInfo {
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+    
+    /* 資料表格樣式 */
+    .stDataFrame {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    /* 統計圖表區塊 */
+    .stCheckbox label span {
+        font-weight: 500;
+    }
+    
+    /* 頁尾樣式 */
+    .stCaption {
+        text-align: center;
+        opacity: 0.7;
+    }
+    
+    /* 分隔線樣式 */
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(128, 128, 128, 0.3), transparent);
+        margin: 1.5rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
